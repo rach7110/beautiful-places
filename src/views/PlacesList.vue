@@ -1,15 +1,5 @@
 <template>
-  <div id="app">
-    <!-- TODO: banner -->
-    <div class="block">
-      <section class="hero is-primary">
-        <div class="hero-body">
-          <p class="title">Beautiful Places</p>
-          <p class="subtitle"></p>
-        </div>
-      </section>
-    </div>
-
+  <div>
     <nav class="level is-mobile">
       <div class="level-right">
         <div class="level-item">

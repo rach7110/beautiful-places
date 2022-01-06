@@ -3,6 +3,15 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
   />
+  <div class="block">
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <p class="title">Beautiful Places</p>
+        <p class="subtitle"></p>
+      </div>
+    </section>
+  </div>
+
   <div id="nav">
     <router-link to="/">Places</router-link> |
     <router-link to="/about">About</router-link>

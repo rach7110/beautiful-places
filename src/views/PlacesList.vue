@@ -103,11 +103,11 @@ export default {
 
       return this.places[index];
     },
-    incrementPlaceLikes(index) {
-      this.places[index].likes++;
+    incrementPlaceLikes(id) {
+      this.places.find((place) => place.id === id).likes++;
     },
-    decrementPlaceLikes(index) {
-      this.places[index].dislikes++;
+    decrementPlaceLikes(id) {
+      this.places.find((place) => place.id === id).dislikes++;
     },
     getIndex(rowIndex, columnIndex) {
       return 3 * rowIndex + columnIndex;

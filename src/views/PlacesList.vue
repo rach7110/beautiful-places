@@ -72,6 +72,7 @@
 <script>
 // @ is an alias to /src
 import PlacesCard from "@/components/PlacesCard.vue";
+import axios from "axios";
 
 export default {
   name: "PlacesList",
@@ -80,58 +81,23 @@ export default {
   },
   data() {
     return {
+      places: [],
       columns: 3,
-      places: [
-        {
-          id: 1,
-          image: "abc.jpg",
-          title: "A very neat place",
-          user: "Deidre Midway",
-          userHandle: "@deidremidway",
-          post: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. ",
-          postDate: "11:09 PM - 1 Jan 2016",
-          likes: 3,
-          dislikes: 2,
-        },
-        {
-          id: 2,
-          image: "abc.jpg",
-          title: "A very neat place",
-          user: "Anne Midway",
-          userHandle: "@deidremidway",
-          post: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. ",
-          postDate: "11:09 PM - 1 Jan 2016",
-          likes: 3,
-          dislikes: 2,
-        },
-        {
-          id: 3,
-          image: "abc.jpg",
-          title: "A very neat place",
-          user: "Jaycee Midway",
-          userHandle: "@deidremidway",
-          post: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. ",
-          postDate: "11:09 PM - 1 Jan 2016",
-          likes: 3,
-          dislikes: 2,
-        },
-        {
-          id: 4,
-          image: "abc.jpg",
-          title: "A very neat place",
-          user: "Darla Midway",
-          userHandle: "@deidremidway",
-          post: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. ",
-          postDate: "11:09 PM - 1 Jan 2016",
-          likes: 3,
-          dislikes: 2,
-        },
-      ],
       showNewPlaceForm: false,
       newPlace: {},
     };
   },
   methods: {
+    async getPlaces() {
+      try {
+        const response = await axios.get(
+          "https://my-json-server.typicode.com/rach7110/beautiful-places/places"
+        );
+        this.places = response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
     currentPlace(rowIndex, columnIndex) {
       const index = this.getIndex(rowIndex, columnIndex);
 
@@ -161,6 +127,9 @@ export default {
     rows() {
       return Math.ceil(this.places.length / this.columns);
     },
+  },
+  created() {
+    this.getPlaces();
   },
 };
 </script>

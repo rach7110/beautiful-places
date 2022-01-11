@@ -72,7 +72,7 @@
 <script>
 // @ is an alias to /src
 import PlacesCard from "@/components/PlacesCard.vue";
-import axios from "axios";
+import PlaceService from "@/services/PlaceService.js";
 
 export default {
   name: "PlacesList",
@@ -99,9 +99,7 @@ export default {
   methods: {
     async getPlaces() {
       try {
-        const response = await axios.get(
-          "https://my-json-server.typicode.com/rach7110/beautiful-places/places"
-        );
+        const response = await PlaceService.getPlaces();
         this.places = response.data;
       } catch (error) {
         console.error(error);

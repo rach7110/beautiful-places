@@ -11,7 +11,7 @@
     </nav>
 
     <div v-if="showNewPlaceForm" class="block">
-      <form @submit.prevent="submitPlace">
+      <form @submit.prevent="create">
         <div class="field">
           <label class="label" for="title">Title</label>
           <div class="control">
@@ -84,7 +84,16 @@ export default {
       places: [],
       columns: 3,
       showNewPlaceForm: false,
-      newPlace: {},
+      newPlace: {
+        image: "",
+        title: "",
+        user: "A logged in user",
+        userHandle: "@userHandle",
+        post: ". ",
+        postDate: "",
+        likes: 3,
+        dislikes: 2,
+      },
     };
   },
   methods: {
@@ -112,12 +121,8 @@ export default {
     getIndex(rowIndex, columnIndex) {
       return 3 * rowIndex + columnIndex;
     },
-    submitPlace() {
-      this.newPlace.likes = 0;
-      this.newPlace.dislikes = 0;
-      this.newPlace.user = "Someone logged in";
-      this.newPlace.postDate = Date.now();
-
+    async create() {
+      // TODO: store new place on server.
       this.places.push(this.newPlace);
       this.newPlace = {};
       this.showNewPlaceForm = false;

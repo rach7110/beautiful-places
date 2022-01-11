@@ -9,7 +9,7 @@ const routes = [
     component: PlacesList,
   },
   {
-    path: "/place/1",
+    path: "/place/:id",
     name: "PlaceDetails",
     component: PlaceDetails,
   },

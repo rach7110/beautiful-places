@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/place/1">
+  <router-link :to="{ name: 'PlaceDetails', params: { id: place.id } }">
     <div class="card-image">
       <figure class="image is-4by3">
         <img

@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     async getPlace() {
-      const place = await PlaceService.getPlace(1); // TODO: get id dynamically.
+      const place = await PlaceService.getPlace(this.$route.params.id); // TODO: get id dynamically.
 
       this.place = place.data; //TODO: import cloneDeep from Lodash.
     },

@@ -13,4 +13,7 @@ export default {
   getPlaces() {
     return apiClient.get("/places");
   },
+  getPlace(id) {
+    return apiClient.get(`/places/${id}`);
+  },
 };

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="place">
     <h1>{{ place.title }}</h1>
     <p>{{ place.user }}</p>
     <p>{{ place.userHandle }}</p>
@@ -12,6 +12,7 @@ import PlaceService from "@/services/PlaceService.js";
 
 export default {
   name: "EventDetails",
+  props: ["id"],
   data() {
     return {
       place: null,
@@ -19,13 +20,12 @@ export default {
   },
   methods: {
     async getPlace() {
-      const place = await PlaceService.getPlace(this.$route.params.id); // TODO: get id dynamically.
+      const place = await PlaceService.getPlace(this.id);
 
       this.place = place.data; //TODO: import cloneDeep from Lodash.
     },
   },
   created() {
-    //   get request for place (by id) and set local data.
     this.getPlace();
   },
 };

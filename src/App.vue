@@ -13,8 +13,8 @@
   </div>
 
   <div id="nav">
-    <router-link to="/">Places</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link :to="{ name: 'Places' }">Places</router-link> |
+    <router-link :to="{ name: 'About' }">About</router-link>
   </div>
   <router-view />
 </template>

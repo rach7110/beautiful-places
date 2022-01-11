@@ -85,11 +85,12 @@ export default {
       columns: 3,
       showNewPlaceForm: false,
       newPlace: {
+        id: null,
         image: "",
         title: "",
         user: "A logged in user",
         userHandle: "@userHandle",
-        post: ". ",
+        post: "",
         postDate: "",
         likes: 3,
         dislikes: 2,
@@ -121,6 +122,7 @@ export default {
     },
     async create() {
       // TODO: store new place on server.
+      this.newPlace.id = this.newId;
       this.places.push(this.newPlace);
       this.newPlace = {};
       this.showNewPlaceForm = false;
@@ -129,6 +131,10 @@ export default {
   computed: {
     rows() {
       return Math.ceil(this.places.length / this.columns);
+    },
+    // TODO: remove once actual db is implemented.
+    newId() {
+      return this.places.length + 1;
     },
   },
   created() {

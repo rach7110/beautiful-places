@@ -20,9 +20,13 @@ export default {
   },
   methods: {
     async getPlace() {
-      const place = await PlaceService.getPlace(this.id);
+      try {
+        const place = await PlaceService.getPlace(this.id);
 
-      this.place = place.data; //TODO: import cloneDeep from Lodash.
+        this.place = place.data;
+      } catch (error) {
+        console.log("Could not locate place with that id.");
+      }
     },
   },
   created() {

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import PlacesList from "../views/PlacesList.vue";
 import PlaceDetails from "../views/PlaceDetails.vue";
+import NotFoundComponent from "../views/NotFoundComponent";
 
 const routes = [
   {
@@ -22,6 +23,11 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  },
+  {
+    path: "/:catchAll(.*)",
+    component: NotFoundComponent,
+    name: "NotFound",
   },
 ];
 
